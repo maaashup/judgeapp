@@ -1,11 +1,11 @@
 # Judge App
 
-Monorepo for the judge app.
+Monorepo for the judge app stack.
 
 - **API**: Hono (Node.js)
 - **DB**: Postgres (Docker)
 - **ORM**: Prisma
-- **Mobile**: Ionic + Capacitor (to be scaffolded)
+- **Mobile**: Ionic + Angular (Standalone) + Capacitor
 
 ## Requirements
 
@@ -15,40 +15,44 @@ Monorepo for the judge app.
 
 ## Repo structure
 
-- `apps/api` – Hono API
-- `apps/mobile` - Frontend
-- `packages/db` – Prisma schema + client
+- `apps/api` - Hono API (Node.js server)
+- `apps/mobile` - Ionic Angular Mobile App (Standalone components)
+- `packages/db` - Prisma schema, migrations, and generated client
 
 ## Quickstart (dev container)
 
 1) Open repo in VS Code
-
 2) Run: **Dev Containers: Reopen in Container**
 
     This repo uses a compose-based devcontainer. When the container starts, Docker will bring up:
     - `app` (the devcontainer you attach to)
     - `db` (Postgres), because `app` depends on it
 
-4) Create env file:
+3) Create env file:
 
 ```sh
 cp .env.example .env
 ```
+4) Install and migrate database:
+   ```bash
+   pnpm install
+   pnpm db:migrate
+   pnpm db:generate
+   ```
+5) Run development mode:
+   ```bash
+   pnpm dev
+   ```
+   - API: [http://localhost:3000](http://localhost:3000)
+   - Mobile: [http://localhost:8100](http://localhost:8100)
 
-5) Install deps + run DB migration + start API:
+## Available scripts (run in root)
 
-```sh
-pnpm install
-pnpm db:migrate
-pnpm dev
-```
-
-6) Test:
-
-- http://localhost:3000/health
-
-## Notes
-### DB connection hostname
-When API runs inside the compose/devcontainer network, the DB host is `db`:
-
-`postgresql://...@db:5432/...`
+| Command | Description |
+| :--- | :--- |
+| `pnpm dev` | Starts API and Mobile apps in parallel |
+| `pnpm dev:api` | Starts only the Hono API |
+| `pnpm dev:mobile` | Starts only the Ionic Angular app |
+| `pnpm db:migrate` | Runs Prisma migrations (dev) |
+| `pnpm db:studio` | Opens Prisma Studio (GUI for DB) |
+| `pnpm build:mobile` | Builds the mobile web assets for production |
