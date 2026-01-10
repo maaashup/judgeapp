@@ -1,0 +1,105 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Event {
+  id           String   @id @default(uuid()) @db.Uuid
+  clientId     String   @unique @map("client_id")
+  eventName    String   @map("event_name")
+  ownerId      String   @map("owner") @db.Uuid
+  eventDate    DateTime @map("event_date")
+  createdAt    DateTime @default(now()) @map("created_at")
+  eventOccured Boolean  @default(false) @map("event_occured")
+
+  owner    User      @relation(fields: [ownerId], references: [id])
+  offenses Offense[] // <- event <-> offenses
+
+  @@map("events")
+}
+
+model User {
+  id         String   @id @default(uuid()) @db.Uuid
+  judgeCode  String?  @unique @map("judge_code")
+  username   String   @unique
+  password   String
+  judgeLevel Int?     @map("judge_level")
+  role       String
+  languages  Json?    @map("languages")
+  games      Json?    @map("games")
+  email      String?  @unique
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  eventsOwned    Event[]
+  offensesJudged Offense[] @relation("OffenseJudge")
+  rulingsOwned   Ruling[]
+
+  @@map("users")
+}
+
+model Player {
+  id        String   @id @default(uuid()) @db.Uuid
+  bushinavi String?  @unique
+  username  String   @unique
+  email     String?  @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  offenses Offense[]
+
+  @@map("players")
+}
+
+model Infraction {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+
+  offenses Offense[]
+
+  @@map("infractions")
+}
+
+model Offense {
+  id           String   @id @default(uuid()) @db.Uuid
+  eventId      String   @map("event_id") @db.Uuid
+  playerId     String   @map("player_id") @db.Uuid
+  infractionId String   @map("infraction_id") @db.Uuid
+  judgeId      String   @map("judge_id") @db.Uuid
+
+  tableNumber  Int?     @map("table_number")
+  round        Int?
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  event      Event      @relation(fields: [eventId], references: [id])
+  player     Player     @relation(fields: [playerId], references: [id])
+  infraction Infraction @relation(fields: [infractionId], references: [id])
+  judge      User       @relation("OffenseJudge", fields: [judgeId], references: [id])
+
+  @@index([eventId])
+  @@index([playerId])
+  @@index([infractionId])
+  @@index([judgeId])
+
+  // temp duplicate prevention
+  @@unique([eventId, playerId, infractionId, round])
+
+  @@map("offenses")
+}
+
+model Ruling {
+  id        String   @id @default(uuid()) @db.Uuid
+  title     String
+  ruling    String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  ownerId   String   @map("owner") @db.Uuid
+  owner     User     @relation(fields: [ownerId], references: [id])
+
+  @@map("rulings")
+}

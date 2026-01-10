@@ -1,0 +1,26 @@
+name: judge-app
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ..:/workspace:cached
+    working_dir: /workspace
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: judge_user
+      POSTGRES_PASSWORD: judgePass26!
+      POSTGRES_DB: judge_app
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
