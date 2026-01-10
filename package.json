@@ -4,7 +4,10 @@
   "packageManager": "pnpm@9.15.0",
   "scripts": {
     "setup": "pnpm -r install && pnpm db:generate",
-    "dev": "pnpm --filter @judge/api dev",
+    "dev": "pnpm --parallel dev",
+    "dev:api": "pnpm --filter @judge/api dev",
+    "dev:mobile": "pnpm --filter @judge/mobile dev",
+    "build:mobile": "pnpm --filter @judge/mobile build",
     "db:generate": "pnpm --filter @judge/db prisma:generate",
     "db:migrate": "pnpm --filter @judge/db prisma:migrate",
     "db:studio": "pnpm --filter @judge/db prisma:studio"
