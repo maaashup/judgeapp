@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Events
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  @if (events.length === 0) {
+    <ion-item>
+      <p>No events found.</p>
+    </ion-item>
+  } @else {
+  @for (event of events; track event) {
+  <ion-item>
+    {{ event.name }} - {{ event.date }}
+  </ion-item>
+  }
+
+  }
+
+
+</ion-content>
