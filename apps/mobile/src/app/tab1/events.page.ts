@@ -6,7 +6,7 @@ import { Event } from '../../apptyping';
   selector: 'app-events',
   templateUrl: 'events.page.html',
   styleUrls: ['events.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonList  ],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonItem],
 })
 
 
