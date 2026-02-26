@@ -9,17 +9,24 @@
 <ion-content [fullscreen]="true">
 
   @if (events.length === 0) {
-    <ion-item>
-      <p>No events found.</p>
-    </ion-item>
+    <div class="container">
+      <strong>No Events Found</strong>
+    </div>
   } @else {
   @for (event of events; track event) {
-  <ion-item>
-    {{ event.name }} - {{ event.date }}
-  </ion-item>
+    <ion-item>
+      {{ event.name }} - {{ event.date }}
+    </ion-item>
+    }
   }
 
-  }
+  <div class="createBtn">
+    <ion-fab slot="fixed">
+      <ion-fab-button >
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
 
 
 </ion-content>
