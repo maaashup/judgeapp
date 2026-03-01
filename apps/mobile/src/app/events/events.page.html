@@ -16,9 +16,8 @@
 
   @for (event of events; track event) {
 
-  <div class="event-container">
-
-    <a [routerLink]="['/','events','event-page', event.name]" >
+  <a class="event-link" [routerLink]="['/','events','event-page', event.name]">
+    <div class="event-container">
       <div class="event-name">
         {{ event.name }}
       </div>
@@ -38,9 +37,9 @@
       <div class="event-country">
         {{ event.country }}
       </div>
-    </a>
+    </div>
+  </a>
 
-  </div>
   }
 
   <div class="createBtn">

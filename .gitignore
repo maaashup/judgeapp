@@ -28,6 +28,7 @@ yarn-error.log*
 # os
 .DS_Store
 Thumbs.db
+.nvmrc
 
 # local vscode settings
 .vscode/
