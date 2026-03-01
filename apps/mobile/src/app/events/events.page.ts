@@ -30,6 +30,14 @@ export class EventsPage {
       game: 'Cardfight!! Vanguard',
       country: 'USA',
       company: 'Bushiroad'
+    },
+    {
+      name: 'PancakeMash Invitational 2024',
+      date: '2024-09-10',
+      format: 'Standard',
+      game: 'Cardfight!! Vanguard',
+      country: 'USA',
+      company: 'Bushiroad'
     }
     
   ];

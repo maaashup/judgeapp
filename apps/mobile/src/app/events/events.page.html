@@ -18,7 +18,7 @@
 
   <div class="event-container">
 
-    <a [routerLink]="['/','events','event-page', event.name]">
+    <a [routerLink]="['/','events','event-page', event.name]" >
       <div class="event-name">
         {{ event.name }}
       </div>
@@ -40,12 +40,11 @@
       </div>
     </a>
 
-
   </div>
   }
 
   <div class="createBtn">
-
+    <img src="assets/icon/add-circle-24px.svg" alt="Create Event">
   </div>
 
 
