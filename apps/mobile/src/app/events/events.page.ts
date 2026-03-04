@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonInput, IonSelect, IonSelectOption, IonDatetime, IonDatetimeButton, IonModal  } from '@ionic/angular/standalone';
 import { Event } from '../../apptyping';
 import { RouterLink } from '@angular/router';
 
@@ -7,11 +7,18 @@ import { RouterLink } from '@angular/router';
   selector: 'app-events',
   templateUrl: 'events.page.html',
   styleUrls: ['events.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, RouterLink],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, RouterLink, IonInput, IonSelect, IonSelect, IonSelectOption, IonDatetime, IonModal, IonDatetimeButton],
 })
 
 
 export class EventsPage {
+
+
+  isFormOpen: boolean = false;
+
+  openEventForm() {
+    this.isFormOpen = true;
+  }
   constructor() {}
 
   public events: Event[] = [
@@ -41,5 +48,11 @@ export class EventsPage {
     }
     
   ];
+
+  public formats: string[] = ['Standard', 'Premium', 'Legacy', 'Modern', 'Commander'];
+
+  public games: string[] = ['Cardfight!! Vanguard', 'Weiss Schwarz', 'Hololive TCG', 'Shadowverse: Evolve'];
+
+  public countries: string[] = ['USA', 'Japan', 'UK', 'Germany', 'France'];
 
 }

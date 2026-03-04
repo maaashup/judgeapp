@@ -39,3 +39,75 @@
     width: 72px;
     height: 72px;
 }
+
+.cancelBtn {
+    height: 4em;
+    width:6em;
+    border-radius: 0.5em;
+    background-color: #a30101;
+    margin-top: 1em;
+}
+
+.form-cnl-btn {
+    display: flex;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+
+.form-container {
+    background-color: rgba($color: #000000, $alpha: 0.75);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-wrap {
+    background-color: white;
+    width: 90%;
+    height: 60%;
+    border-radius: 0.5em;
+    color: black;
+    padding: 1em;
+    
+}
+
+.input-wrap {
+    display: flex;
+}
+
+.form-label {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-right: 0.3em;
+}
+
+.form-input {
+    width: 70%;
+    background-color: rgb(245, 245, 245);
+    border-bottom: 1px solid black;
+    padding: 1em;
+}
+
+.form-select {
+    width: 70%;
+    height: 10%;
+    background-color: rgb(245, 245, 245);
+    border-bottom: 1px solid black;
+    margin-bottom: 1em;
+}
+
+ion-select::part(icon) {
+  position: absolute;
+    right: 1em;
+}
+
+ion-datetime-button::part(native) {
+    background: rgb(122, 122, 122);
+}
