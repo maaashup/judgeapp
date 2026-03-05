@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonInput, IonSelect, IonSelectOption, IonDatetime, IonDatetimeButton, IonModal  } from '@ionic/angular/standalone';
 import { Event } from '../../apptyping';
 import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-events',
   templateUrl: 'events.page.html',
   styleUrls: ['events.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, RouterLink, IonInput, IonSelect, IonSelect, IonSelectOption, IonDatetime, IonModal, IonDatetimeButton],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, RouterLink, IonInput, IonSelect, IonSelect, IonSelectOption, IonDatetime, IonModal, IonDatetimeButton, FormsModule],
 })
 
 
@@ -20,6 +21,14 @@ export class EventsPage {
     this.isFormOpen = true;
   }
   constructor() {}
+
+  createEvent() {
+    this.events.push(this.eventForm);
+    this.eventForm = {name: '', date: '2024-07-15', format: '', game: '', country: '', company: 'Bushiroad'};
+    this.isFormOpen = false;
+  }
+
+  eventForm: Event = {name: '', date: '2024-07-15', format: '', game: '', country: '', company: 'Bushiroad'};
 
   public events: Event[] = [
     {

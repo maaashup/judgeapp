@@ -56,15 +56,17 @@
 
       <form>
         <div class="input-wrap">
-          <label class="form-label" id="eventName" for="eventName">Event Name:</label>
-          <ion-input class="form-input" clearInput="true" placeholder="Enter Event Name Here" required></ion-input>
+          <label class="form-label" id="name" for="name">Event Name:</label>
+          <ion-input class="form-input" [(ngModel)]="eventForm.name" id="name" name="name" clearInput="true"
+            placeholder="Enter Event Name Here" required></ion-input>
         </div>
 
         <br>
 
         <div class="input-wrap">
           <label class="form-label" id="game" for="Game">Game: </label>
-          <ion-select class="form-select" id="game" name="game" placeholder="Select Game" required>
+          <ion-select class="form-select" id="game" name="game" placeholder="Select Game" required
+            [(ngModel)]="eventForm.game">
             @for (game of games; track game) {
             <ion-select-option value="{{ game }}">{{ game }}</ion-select-option>
             }
@@ -73,7 +75,8 @@
 
         <div class="input-wrap">
           <label class="form-label" id="format" for="Format">Format: </label>
-          <ion-select class="form-select" id="format" name="format" placeholder="Select Format" required>
+          <ion-select class="form-select" id="format" name="format" placeholder="Select Format" required
+            [(ngModel)]="eventForm.format">
             @for (format of formats; track format) {
             <ion-select-option value="{{ format }}">{{ format }}</ion-select-option>
             }
@@ -82,28 +85,28 @@
 
         <div class="input-wrap">
           <label class="form-label" id="country" for="Country">Country: </label>
-          <ion-select class="form-select" id="country" name="country" placeholder="Select Country" required>
+          <ion-select class="form-select" id="country" name="country" placeholder="Select Country" required
+            [(ngModel)]="eventForm.country">
             @for (country of countries; track country) {
             <ion-select-option value="{{ country }}">{{ country }}</ion-select-option>
             }
           </ion-select>
         </div>
 
-        <div class="input-wrap">
-          <label class="form-label" id="date" for="Date">Date: </label>
-          <ion-datetime-button class="form-date" datetime="datetime"></ion-datetime-button>
+        <!-- <div class="input-wrap">
+          <label class="form-label" id="date" for="date">Date: </label>
+          <ion-datetime-button datetime="datetime" id="date" name="date" [(ngModel)]="eventForm.date"></ion-datetime-button>
 
           <ion-modal [keepContentsMounted]="true">
             <ng-template>
-              <ion-datetime  id="datetime" presentation="date" [formatOptions]="{
-                      date: {
-                      weekday: 'short',
-                      month: 'long',
-                      day: '2-digit',
-                      },
-                      }"></ion-datetime>
-              </ng-template>
-            </ion-modal>
+              <ion-datetime id="datetime" ></ion-datetime>
+            </ng-template>
+          </ion-modal>
+        </div> -->
+
+        <div class="form-btn-wrap">
+          <button class="submitBtn" type="submit" (click)="createEvent()">Create Event</button>
+
         </div>
 
         <div class="form-cnl-btn">
