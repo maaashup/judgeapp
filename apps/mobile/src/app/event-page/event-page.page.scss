@@ -3,3 +3,32 @@
     width: 10px;
     height: 10px;
 }
+
+.main-container {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-link {
+    text-decoration: none;
+    color: white;
+    font-size: 1.6em;
+}
+
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+    width: 80%;
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+    background-color: grey;
+    position: relative;
+    top: 10%;
+    left: 10%;
+    padding: 1em;
+
+}

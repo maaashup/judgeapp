@@ -1,55 +1,76 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonInput, IonSelect, IonSelectOption, IonDatetime, IonDatetimeButton, IonModal  } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonInput, IonSelect, IonSelectOption, IonLabel, IonDatetime, IonModal, IonDatetimeButton, IonItem, IonText  } from '@ionic/angular/standalone';
 import { Event } from '../../apptyping';
 import { RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import {FormGroup, FormControl, ReactiveFormsModule, Validators, FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-events',
   templateUrl: 'events.page.html',
   styleUrls: ['events.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, RouterLink, IonInput, IonSelect, IonSelect, IonSelectOption, IonDatetime, IonModal, IonDatetimeButton, FormsModule],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, RouterLink, IonInput, IonSelect, IonSelect, IonSelectOption, ReactiveFormsModule, IonLabel, IonDatetime,IonModal, IonDatetimeButton,]
 })
 
 
 export class EventsPage {
-
+  public eventForm: FormGroup;
 
   isFormOpen: boolean = false;
 
   openEventForm() {
     this.isFormOpen = true;
   }
-  constructor() {}
-
-  createEvent() {
-    this.events.push(this.eventForm);
-    this.eventForm = {name: '', date: '2024-07-15', format: '', game: '', country: '', company: 'Bushiroad'};
-    this.isFormOpen = false;
+  constructor(public fb: FormBuilder) {
+    this.eventForm = this.fb.group({
+      name: ['', Validators.compose([Validators.required])],
+      format: ['', Validators.compose([Validators.required])],
+      game: ['', Validators.compose([Validators.required])],
+      country: ['', Validators.compose([Validators.required])],
+      datetime: ['', Validators.compose([Validators.required])]
+    });
   }
 
-  eventForm: Event = {name: '', date: '2024-07-15', format: '', game: '', country: '', company: 'Bushiroad'};
+  createEvent() {
+    let uuid = crypto.randomUUID();
+    console.log(uuid);
+    this.events.push({
+      id: uuid,
+      name: this.eventForm.value['name'],
+      format: this.eventForm.value['format'],
+      game: this.eventForm.value['game'],
+      country: this.eventForm.value['country'],
+      company: 'Bushiroad',
+      date: new Date().toDateString()
+    });
+    console.log(this.eventForm.value);
+
+    this.isFormOpen = false;
+
+  }
 
   public events: Event[] = [
     {
+      id: '1234-abcd-3456-efgh',
       name: 'PancakeMash Cup 2024',
-      date: '2024-07-15',
+      date:  new Date().toDateString(),
       format: 'Standard',
       game: 'Cardfight!! Vanguard',
       country: 'USA',
       company: 'Bushiroad'
     },
     {
+      id: '23jn-mn31-98mj-lk30',
       name: 'PancakeMash Open 2024',
-      date: '2024-08-20',
+      date: new Date().toDateString(),
       format: 'Premium',
       game: 'Cardfight!! Vanguard',
       country: 'USA',
       company: 'Bushiroad'
     },
     {
+      id: 'gh87-kn89-lm09-tyuv',
       name: 'PancakeMash Invitational 2024',
-      date: '2024-09-10',
+      date: new Date().toDateString(),
       format: 'Standard',
       game: 'Cardfight!! Vanguard',
       country: 'USA',

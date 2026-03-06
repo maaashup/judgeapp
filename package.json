@@ -1,7 +1,7 @@
 {
   "name": "judge-app",
   "private": true,
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "pnpm@10.30.3",
   "scripts": {
     "setup": "pnpm -r install && pnpm db:generate",
     "dev": "pnpm --parallel dev",

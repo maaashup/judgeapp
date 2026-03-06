@@ -16,7 +16,7 @@
 
   @for (event of events; track event) {
 
-  <a class="event-link" [routerLink]="['/','events','event-page', event.name]">
+  <a class="event-link" [routerLink]="['/','events','event-page', event.id]">
     <div class="event-container">
       <div class="event-name">
         {{ event.name }}
@@ -54,63 +54,59 @@
         Create Event
       </h1>
 
-      <form>
-        <div class="input-wrap">
-          <label class="form-label" id="name" for="name">Event Name:</label>
-          <ion-input class="form-input" [(ngModel)]="eventForm.name" id="name" name="name" clearInput="true"
-            placeholder="Enter Event Name Here" required></ion-input>
+      <form [formGroup]="eventForm" (ngSubmit)="createEvent()">
+        <div>
+          <ion-label position="stacked">Event Name:</ion-label>
+          <ion-input class="form-input" fill="solid" formControlName="name" type="text" [clearInput]="true"
+            placeholder="Enter Event Name"></ion-input>
         </div>
 
-        <br>
-
-        <div class="input-wrap">
-          <label class="form-label" id="game" for="Game">Game: </label>
-          <ion-select class="form-select" id="game" name="game" placeholder="Select Game" required
-            [(ngModel)]="eventForm.game">
-            @for (game of games; track game) {
+        <div>
+          <ion-label position="stacked">Game:</ion-label>
+          <ion-select class="form-select" formControlName="game" placeholder="Select a game">
+            @for(game of games; track game) {
             <ion-select-option value="{{ game }}">{{ game }}</ion-select-option>
             }
           </ion-select>
         </div>
 
-        <div class="input-wrap">
-          <label class="form-label" id="format" for="Format">Format: </label>
-          <ion-select class="form-select" id="format" name="format" placeholder="Select Format" required
-            [(ngModel)]="eventForm.format">
-            @for (format of formats; track format) {
+        <div>
+          <ion-label position="stacked">Format:</ion-label>
+          <ion-select class="form-select" formControlName="format" placeholder="Select a format">
+            @for(format of formats; track format) {
             <ion-select-option value="{{ format }}">{{ format }}</ion-select-option>
             }
           </ion-select>
         </div>
 
-        <div class="input-wrap">
-          <label class="form-label" id="country" for="Country">Country: </label>
-          <ion-select class="form-select" id="country" name="country" placeholder="Select Country" required
-            [(ngModel)]="eventForm.country">
-            @for (country of countries; track country) {
+        <div>
+          <ion-label position="stacked">Country:</ion-label>
+          <ion-select class="form-select" formControlName="country" placeholder="Select a country">
+            @for(country of countries; track country) {
             <ion-select-option value="{{ country }}">{{ country }}</ion-select-option>
             }
           </ion-select>
         </div>
 
-        <!-- <div class="input-wrap">
-          <label class="form-label" id="date" for="date">Date: </label>
-          <ion-datetime-button datetime="datetime" id="date" name="date" [(ngModel)]="eventForm.date"></ion-datetime-button>
+        <div>
+          <ion-label position="stacked">Event Date:</ion-label>
+          <ion-datetime-button datetime="datetime"></ion-datetime-button>
 
           <ion-modal [keepContentsMounted]="true">
             <ng-template>
-              <ion-datetime id="datetime" ></ion-datetime>
+              <ion-datetime id="datetime" [showDefaultButtons]="true"></ion-datetime>
             </ng-template>
           </ion-modal>
-        </div> -->
-
-        <div class="form-btn-wrap">
-          <button class="submitBtn" type="submit" (click)="createEvent()">Create Event</button>
-
         </div>
 
-        <div class="form-cnl-btn">
-          <button class="cancelBtn" (click)="isFormOpen = false">Cancel</button>
+        <div class="form-btn-container">
+          <div class="form-btn-wrap">
+            <button class="submitBtn" type="submit">Create Event</button>
+          </div>
+
+          <div class="form-cnl-btn">
+            <button class="cancelBtn" (click)="isFormOpen = false">Cancel</button>
+          </div>
         </div>
 
       </form>

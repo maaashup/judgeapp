@@ -40,19 +40,6 @@
     height: 72px;
 }
 
-.cancelBtn {
-    height: 4em;
-    width:6em;
-    border-radius: 0.5em;
-    background-color: #a30101;
-    margin-top: 1em;
-}
-
-.form-cnl-btn {
-    display: flex;
-    height: 100%;
-    justify-content: flex-end;
-}
 
 
 .form-container {
@@ -89,14 +76,14 @@
 }
 
 .form-input {
-    width: 70%;
+    width: 90%;
     background-color: rgb(245, 245, 245);
     border-bottom: 1px solid black;
     padding: 1em;
 }
 
 .form-select {
-    width: 70%;
+    width: 90%;
     height: 10%;
     background-color: rgb(245, 245, 245);
     border-bottom: 1px solid black;
@@ -108,6 +95,33 @@ ion-select::part(icon) {
     right: 1em;
 }
 
-ion-datetime-button::part(native) {
-    background: rgb(122, 122, 122);
+.form-btn-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.cancelBtn {
+    height: 4em;
+    width:6em;
+    border-radius: 0.5em;
+    background-color: #a30101;
+    margin-top: 1em;
+    justify-content: flex-end;
+}
+
+.submitBtn {
+    height: 4em;
+    width:6em;
+    border-radius: 0.5em;
+    background-color: #1a55c4;
+    margin-top: 1em;
+    justify-content: flex-start;
+    padding: 0.5em;
+}
+
+.form-cnl-btn {
+    display: flex;
+    height: 100%;
+    justify-content: flex-end;
 }
