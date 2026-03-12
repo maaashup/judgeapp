@@ -11,7 +11,8 @@
       "extensions": [
         "dbaeumer.vscode-eslint",
         "Prisma.prisma",
-        "firsttris.vscode-jest-runner"
+        "firsttris.vscode-jest-runner",
+        "Dart-Code.flutter"
       ]
     }
   }

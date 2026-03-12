@@ -1,7 +1,7 @@
 {
   "name": "judge-app",
   "private": true,
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "pnpm@10.30.3",
   "scripts": {
     "setup": "pnpm -r install && pnpm db:generate",
     "dev": "pnpm --parallel dev",
@@ -11,7 +11,7 @@
     "db:generate": "pnpm --filter @judge/db prisma:generate",
     "db:migrate": "pnpm --filter @judge/db prisma:migrate",
     "db:studio": "pnpm --filter @judge/db prisma:studio",
-    "format": "prettier --write .",
+    "format": "prettier --write . && pnpm --filter @judge/mobile format",
     "lint": "eslint . && pnpm --filter @judge/mobile lint",
     "prepare": "husky"
   },
@@ -24,10 +24,10 @@
       "eslint --fix",
       "prettier --write"
     ],
-    "apps/mobile/**/*.{ts,html}": [
-      "prettier --write"
+    "apps/mobile/**/*.dart": [
+      "dart format"
     ],
-    "*.{json,md,scss,yml,yaml,prisma}": [
+    "*.{json,md,yml,yaml,prisma}": [
       "prettier --write"
     ]
   },
