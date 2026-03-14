@@ -1,6 +1,6 @@
 # Judge App
 
-Monorepo for the judge app stack.
+Monorepo for the judge app stack
 
 - **API**: Hono
 - **DB**: Postgres
@@ -26,7 +26,7 @@ Run `Dev Containers: Reopen in Container`
 
     This repo uses a compose-based devcontainer. When the container starts, Docker will bring up:
     - `app` (the devcontainer you attach to)
-    - `db` (Postgres), because `app` depends on it
+    - `db` (Postgres)
 
 Create env file
 
@@ -42,7 +42,14 @@ pnpm db:migrate
 pnpm db:generate
 ```
 
-Run development mode
+Preferably, run app and API separately for hot reloading
+
+```bash
+pnpm dev:api
+pnpm dev:mobile
+```
+
+Or run development mode in parallel
 
 ```bash
 pnpm dev

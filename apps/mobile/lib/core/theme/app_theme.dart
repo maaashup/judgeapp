@@ -4,15 +4,13 @@ import 'app_colors.dart';
 
 class AppTheme {
   static ThemeData dark() {
-    final textTheme = GoogleFonts.notoSansTextTheme();
-
-    return ThemeData(
+    final base = ThemeData(
+      fontFamily: GoogleFonts.googleSans().fontFamily,
       colorScheme: ColorScheme.fromSeed(
         seedColor: Colors.blue,
         brightness: Brightness.dark,
       ),
       useMaterial3: true,
-      textTheme: textTheme.merge(ThemeData.dark().textTheme),
       scaffoldBackgroundColor: AppColors.darkBackground,
       cardTheme: CardThemeData(
         color: AppColors.darkSurface,
@@ -46,18 +44,21 @@ class AppTheme {
         ),
       ),
     );
+
+    return base.copyWith(
+      textTheme: GoogleFonts.googleSansTextTheme(base.textTheme),
+      primaryTextTheme: GoogleFonts.googleSansTextTheme(base.primaryTextTheme),
+    );
   }
 
   static ThemeData light() {
-    final textTheme = GoogleFonts.notoSansTextTheme();
-
-    return ThemeData(
+    final base = ThemeData(
+      fontFamily: GoogleFonts.googleSans().fontFamily,
       colorScheme: ColorScheme.fromSeed(
         seedColor: Colors.blue,
         brightness: Brightness.light,
       ),
       useMaterial3: true,
-      textTheme: textTheme.merge(ThemeData.light().textTheme),
       scaffoldBackgroundColor: AppColors.lightBackground,
       cardTheme: CardThemeData(
         color: AppColors.lightSurface,
@@ -93,6 +94,11 @@ class AppTheme {
           const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
         ),
       ),
+    );
+
+    return base.copyWith(
+      textTheme: GoogleFonts.googleSansTextTheme(base.textTheme),
+      primaryTextTheme: GoogleFonts.googleSansTextTheme(base.primaryTextTheme),
     );
   }
 }
