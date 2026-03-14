@@ -3,9 +3,14 @@
   "dockerComposeFile": "docker-compose.yaml",
   "service": "app",
   "workspaceFolder": "/workspace",
-  "forwardPorts": [3000, 5432, 8100],
+  "forwardPorts": [3000, 5432, 8100, 8101],
+  "portsAttributes": {
+    "default": {
+      "onAutoForward": "silent"
+    }
+  },
   "remoteUser": "node",
-  "postCreateCommand": "corepack enable && pnpm -v",
+  "postCreateCommand": "corepack enable && pnpm install && cd apps/mobile && flutter pub get",
   "customizations": {
     "vscode": {
       "extensions": [

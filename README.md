@@ -50,6 +50,7 @@ pnpm dev
 
 - API: [http://localhost:3000](http://localhost:3000)
 - Mobile: [http://localhost:8100](http://localhost:8100)
+  - [Dart Debug Extension](https://chromewebstore.google.com/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm) should be installed for hot reload
 
 ## Available scripts (run in root)
 
