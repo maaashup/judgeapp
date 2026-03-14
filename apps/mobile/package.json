@@ -2,7 +2,8 @@
   "name": "@judge/mobile",
   "private": true,
   "scripts": {
-    "dev": "flutter run -d web-server --web-port 8100 --web-hostname 0.0.0.0",
+    "dev": "flutter run -d linux",
+    "dev:web": "flutter run -d web-server --web-port 8100 --web-hostname 0.0.0.0",
     "build": "flutter build web",
     "lint": "flutter analyze",
     "format": "dart format ."
