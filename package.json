@@ -10,6 +10,7 @@
     "build:mobile": "pnpm --filter @judge/mobile build",
     "db:generate": "pnpm --filter @judge/db prisma:generate",
     "db:migrate": "pnpm --filter @judge/db prisma:migrate",
+    "db:reset": "pnpm --filter @judge/db prisma:reset",
     "db:studio": "pnpm --filter @judge/db prisma:studio",
     "format": "prettier --write . && pnpm --filter @judge/mobile format",
     "lint": "eslint . && pnpm --filter @judge/mobile lint",

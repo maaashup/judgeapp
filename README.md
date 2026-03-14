@@ -59,6 +59,7 @@ pnpm dev
 | `pnpm dev`          | Starts API and Mobile apps in parallel |
 | `pnpm dev:api`      | Starts only the Hono API               |
 | `pnpm dev:mobile`   | Starts only the Flutter app            |
-| `pnpm db:migrate`   | Runs Prisma migrations (dev)           |
+| `pnpm db:migrate`   | Runs Prisma migration                  |
+| `pnpm db:reset`     | Resets Prisma migrations               |
 | `pnpm db:studio`    | Opens Prisma Studio (GUI for DB)       |
 | `pnpm build:mobile` | Builds Flutter APK                     |
