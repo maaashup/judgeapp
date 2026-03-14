@@ -28,7 +28,7 @@
     "apps/mobile/**/*.dart": [
       "dart format"
     ],
-    "*.{json,md,yml,yaml,prisma}": [
+    "*.{json,md,yml,yaml}": [
       "prettier --write"
     ]
   },

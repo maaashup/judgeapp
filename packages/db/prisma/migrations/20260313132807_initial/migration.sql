@@ -5,6 +5,9 @@ CREATE TABLE "events" (
     "event_name" TEXT NOT NULL,
     "owner" UUID NOT NULL,
     "event_date" TIMESTAMP(3) NOT NULL,
+    "format" TEXT NOT NULL DEFAULT 'Standard',
+    "game" TEXT NOT NULL DEFAULT 'Cardfight!! Vanguard',
+    "country" TEXT NOT NULL DEFAULT 'USA',
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "event_occured" BOOLEAN NOT NULL DEFAULT false,
 

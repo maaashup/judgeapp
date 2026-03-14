@@ -12,11 +12,14 @@ model Event {
   eventName    String   @map("event_name")
   ownerId      String   @map("owner") @db.Uuid
   eventDate    DateTime @map("event_date")
+  format       String   @default("Standard")
+  game         String   @default("Cardfight!! Vanguard")
+  country      String   @default("USA")
   createdAt    DateTime @default(now()) @map("created_at")
   eventOccured Boolean  @default(false) @map("event_occured")
 
   owner    User      @relation(fields: [ownerId], references: [id])
-  offenses Offense[] // <- event <-> offenses
+  offenses Offense[]
 
   @@map("events")
 }
