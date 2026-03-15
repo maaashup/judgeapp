@@ -5,6 +5,7 @@ import 'package:mobile/core/widgets/app_icon_button.dart';
 import 'package:mobile/core/widgets/app_text_field.dart';
 import 'package:mobile/core/widgets/empty_state.dart';
 import 'package:mobile/core/widgets/filter_chip_button.dart';
+import 'package:mobile/features/event/presentation/event_page.dart';
 import 'package:mobile/main.dart';
 import 'package:mobile/features/events/data/event.dart';
 import 'package:mobile/features/events/data/event_options.dart';
@@ -213,6 +214,17 @@ class _EventsPageState extends State<EventsPage> {
                           event: event,
                           onEdit: () => _openForm(event),
                           onDelete: () => _confirmDelete(event),
+                          onTap: () => {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute<void>(
+                                builder: (context) => EventDetailPage(
+                                  eventId: event.id,
+                                  eventName: event.eventName,
+                                ),
+                              ),
+                            ),
+                          },
                         );
                       },
                     ),

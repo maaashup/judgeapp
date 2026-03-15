@@ -1,9 +1,8 @@
 const List<String> eventFormats = [
   'Standard',
   'Premium',
-  'Legacy',
-  'Modern',
-  'Commander',
+  'Neo-Standard',
+  'CrossCraft',
 ];
 
 const List<String> eventGames = [

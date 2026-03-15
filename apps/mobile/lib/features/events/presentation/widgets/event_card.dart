@@ -7,11 +7,14 @@ class EventCard extends StatelessWidget {
   final VoidCallback onEdit;
   final VoidCallback onDelete;
 
+  final VoidCallback onTap;
+
   const EventCard({
     super.key,
     required this.event,
     required this.onEdit,
     required this.onDelete,
+    required this.onTap,
   });
 
   @override
@@ -21,7 +24,7 @@ class EventCard extends StatelessWidget {
     return Card(
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
-        onTap: onEdit,
+        onTap: onTap,
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(
