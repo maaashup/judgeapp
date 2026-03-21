@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/features/event/presentation/widgets/path_button.dart';
+import 'package:mobile/features/judges/presentation/judges_page.dart';
+import 'package:mobile/features/participants/presentation/participants_page.dart';
+import 'package:mobile/features/rulings/presentation/rulings_page.dart';
 
 class EventDetailPage extends StatelessWidget {
   const EventDetailPage({
@@ -22,13 +25,42 @@ class EventDetailPage extends StatelessWidget {
         child: Column(
           children: [
             //Paricipants Button
-            MyButton(text: "Participants", color: Colors.blue),
+            MyButton(
+              text: "Participants",
+              color: Colors.blue,
+              onTap: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (context) => ParticipantsPage(),
+                  ),
+                ),
+              },
+            ),
             SizedBox(height: 20),
             //Judges Button
-            MyButton(text: "Judges", color: Colors.red),
+            MyButton(
+              text: "Judges",
+              color: Colors.red,
+              onTap: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(builder: (context) => JudgesPage()),
+                ),
+              },
+            ),
             SizedBox(height: 20),
             //Rulings Button
-            MyButton(text: "Rulings", color: Colors.deepPurple),
+            MyButton(
+              text: "Rulings",
+              color: Colors.deepPurple,
+              onTap: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(builder: (context) => RulingsPage()),
+                ),
+              },
+            ),
           ],
         ),
       ),
