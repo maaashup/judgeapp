@@ -22,11 +22,13 @@ class EventDetailPage extends StatelessWidget {
         child: Column(
           children: [
             //Paricipants Button
-            MyButton(text: "Test", color: Colors.blue),
+            MyButton(text: "Participants", color: Colors.blue),
+            SizedBox(height: 20),
             //Judges Button
-            MyButton(text: "Text2", color: Colors.red),
-
+            MyButton(text: "Judges", color: Colors.red),
+            SizedBox(height: 20),
             //Rulings Button
+            MyButton(text: "Rulings", color: Colors.deepPurple),
           ],
         ),
       ),
